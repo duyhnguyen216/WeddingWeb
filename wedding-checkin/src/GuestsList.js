@@ -4,7 +4,7 @@ import './GuestsList.css';
 function GuestsList() {
   const [originalGuests, setOriginalGuests] = useState([]); // Holds the fetched guests
   const [displayGuests, setDisplayGuests] = useState([]); // Holds guests to be displayed (sorted/filtered)
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm] = useState('');
   const [sortConfig, setSortConfig] = useState({ key: 'name', direction: 'ascending' });
 
   useEffect(() => {
