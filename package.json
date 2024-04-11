@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install-frontend": "cd wedding-checkin && npm install",
-    "build-frontend": "cd wedding-checkin && npm run build",
-    "build": "npm install && npm run install-frontend && npm run build-frontend"
+    "start": "node index.js",
+    "build": "cd wedding-checkin && npm install && npm run build",
+    "postinstall": "npm run build",
+    "serve": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +16,6 @@
     "@azure/cosmos": "^4.0.0",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
-    "express": "^4.19.2",
-    "qrcode-reader": "^1.0.4"
+    "express": "^4.19.2"
   }
 }

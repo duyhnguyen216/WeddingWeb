@@ -14,6 +14,14 @@ const port = process.env.PORT || 4000;
 app.use(cors());
 app.use(bodyParser.json());
 
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'wedding-checkin/build')));
+
+// Handles any requests that don't match the ones above
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname+'/wedding-checkin/build/index.html'));
+});
+
 app.post('/api/checkin', async (req, res) => {
   const { id } = req.body; // Assuming id is passed in the request
   
