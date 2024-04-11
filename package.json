@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install-frontend": "cd wedding-checkin && npm install",
+    "build-frontend": "cd wedding-checkin && npm run build",
+    "build": "npm install && npm run install-frontend && npm run build-frontend"
   },
   "keywords": [],
   "author": "",
