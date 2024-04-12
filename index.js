@@ -11,7 +11,7 @@ const client = new CosmosClient(connectionString);
 const database = client.database("wedding_guest");
 const container = database.container("wedding_guest");
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(bodyParser.json());

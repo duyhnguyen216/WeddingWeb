@@ -8,7 +8,7 @@ function GuestInfo() {
     useEffect(() => {
         // Fetch guest info from the API
         const fetchGuestInfo = async () => {
-            const response = await fetch(`http://localhost:4000/api/guests/${id}`); // Adjust API endpoint as needed
+            const response = await fetch(`http://localhost:8080/api/guests/${id}`); // Adjust API endpoint as needed
             const data = await response.json();
             setGuestInfo(data);
         };

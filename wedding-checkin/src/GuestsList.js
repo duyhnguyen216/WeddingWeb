@@ -8,7 +8,7 @@ function GuestsList() {
   const [sortConfig, setSortConfig] = useState({ key: 'name', direction: 'ascending' });
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/allguests')
+    fetch('http://localhost:8080/api/allguests')
       .then(response => response.json())
       .then(data => {
         setOriginalGuests(data); // Update the original fetched guests
