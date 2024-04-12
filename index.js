@@ -44,7 +44,7 @@ app.get('/api/checkin/:id', async (req, res) => {
     // Replace the item with its updated form
     const { resource: updatedGuest } = await container.item(guest.id, guest.GuestID).replace(guest);
 
-    res.redirect(`http://localhost:3000/guest-info/${guestId}`);
+    res.redirect(`${process.env.REACT_APP_API_BASE_URL}/guest-info/${guestId}`);
   } catch (error) {
     console.error("Error during check-in:", error);
     res.status(500).send({ message: "Failed to check in guest", error: error.message });
