@@ -31,6 +31,10 @@ table {
     color: #FFC107; /* Example color for Nhà Gái */
   }
 
+  .friend {
+    color: #28A745
+  }
+
   th {
     cursor: pointer;
     user-select: none;

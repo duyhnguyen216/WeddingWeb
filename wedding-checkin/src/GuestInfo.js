@@ -21,15 +21,23 @@ function GuestInfo() {
     return (
         <div style={styles.container}>
             <p style={styles.name}>
-                {guestInfo.name} - {guestInfo.side === "T" ? 
-                <span style={styles.brideSide}>Nhà Trai</span> : 
-                <span style={styles.groomSide}>Nhà Gái</span>}
+                {guestInfo.name} - {guestInfo.side === "T" ?
+                    <span style={styles.brideSide}>Nhà Trai</span> : guestInfo.side === "G" ?
+                        <span style={styles.groomSide}>Nhà Gái</span> :
+                        <span style={styles.friend}>Bạn Cô Dâu Chú Rể</span>}
             </p>
+
             <p style={styles.details}>Bàn: <span style={styles.bold}>{guestInfo.table}</span></p>
+            {guestInfo.note && (
+                <p style={styles.details}>
+                    Ghi Chú: <span style={styles.italic}>{guestInfo.note}</span>
+                </p>
+            )}
+            
             <p style={styles.checkIn}>
-                Check In: {guestInfo.isCheckedIn ? 
-                <span style={styles.checkedIn}>✅</span> : 
-                <span style={styles.notCheckedIn}>❌</span>}
+                Check In: {guestInfo.isCheckedIn ?
+                    <span style={styles.checkedIn}>✅</span> :
+                    <span style={styles.notCheckedIn}>❌</span>}
             </p>
         </div>
     );
@@ -84,12 +92,18 @@ const styles = {
     groomSide: {
         color: '#FFD700',
     },
+    friend: {
+        color: '#28A745',
+    },
     details: {
         fontSize: '30px',
         color: '#555',
     },
     bold: {
         fontWeight: 'bold',
+    },
+    italic: {
+        fontStyle: 'italic'
     },
     checkIn: {
         fontSize: '30px',

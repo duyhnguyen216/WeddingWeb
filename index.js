@@ -51,6 +51,36 @@ app.get('/api/checkin/:id', async (req, res) => {
   }
 });
 
+app.post('/api/flip-checkin-state/:id', async (req, res) => {
+  const guestId = req.params.id;
+  try {
+
+    // Query to find the guest by id
+    const { resources: guests } = await container.items
+      .query({
+        query: "SELECT * FROM c WHERE c.GuestID = @GuestID",
+        parameters: [{ name: "@GuestID", value: guestId.toString() }]
+      })
+      .fetchAll();
+
+    if (guests.length === 0) {
+      res.status(404).send('Guest not found.');
+      return;
+    }
+
+    const guest = guests[0];
+    guest.isCheckedIn = !guest.isCheckedIn; // Flip check in state
+
+    // Replace the item with its updated form
+    const { resource: updatedGuest } = await container.item(guest.id, guest.GuestID).replace(guest);
+
+    res.json(updatedGuest);
+  } catch (error) {
+    console.error("Error during check-in:", error);
+    res.status(500).send({ message: "Failed to check in guest", error: error.message });
+  }
+});
+
 app.get('/api/guests/:id', async (req, res) => {
   const guestId = req.params.id;
   try {
